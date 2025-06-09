@@ -7,6 +7,7 @@ import LikedArtifacts from "../pages/LikedArtifacts";
 import MyArtifacts from "../pages/MyArtifacts";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
+import ArtifactDetails from "../pages/ArtifactDetails";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path:'/all-artifacts',
         Component:AllArtifacts
+      },
+       {
+        path:'/artifact-details',
+        Component:ArtifactDetails
       },
 
     ]

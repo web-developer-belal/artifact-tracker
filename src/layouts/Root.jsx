@@ -7,7 +7,9 @@ const Root = () => {
   return (
     <>
       <Header></Header>
-      <Outlet></Outlet>
+      <main className="py-5 px-3 md:px-5">
+        <Outlet></Outlet>
+      </main>
       <Footer></Footer>
     </>
   );
