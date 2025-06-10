@@ -1,20 +1,61 @@
+import axios from "axios";
+import { use } from "react";
+import { AuthContext } from "../context/AuthProvider";
+import { toast } from "react-toastify";
+
 const AddArtifact = () => {
+  const { user } = use(AuthContext);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    let formData = new FormData(event.target);
+    formData.append("likeCount", 0);
+    formData = Object.fromEntries(formData.entries());
+    // console.log("Form Data Submitted:", Object.fromEntries(formData.entries()));
+    axios
+      .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log("Artifact added successfully:", response.data);
+          event.target.reset();
+          toast.success("Artifact added successfully!");
+        } else {
+          console.error("Error adding artifact:", response);
+          toast.error("Failed to add artifact. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error adding artifact:", error);
+        toast.error("Failed to add artifact. Please try again.");
+      });
+  };
+  console.log("User Data:", user);
   return (
     <div className="px-4 py-8 bg-base-100">
       <h2 className="text-2xl font-bold mb-6 text-center">Add New Artifact</h2>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl p-6 mx-auto bg-base-200 shadow hover:shadow-md transition-all rounded-lg ">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl p-6 mx-auto bg-base-200 shadow hover:shadow-md transition-all rounded-lg "
+      >
         <fieldset className="fieldset">
           <label className="label" htmlFor="artifactName">
             <span className="label-text">Artifact Name</span>
           </label>
-          <input name="artifactName" type="text" className="input input-bordered w-full" />
+          <input
+            name="artifactName"
+            type="text"
+            className="input input-bordered w-full"
+          />
         </fieldset>
 
         <fieldset className="fieldset">
           <label className="label" htmlFor="artifactImage">
             <span className="label-text">Artifact Image URL</span>
           </label>
-          <input name="artifactImage" type="url" className="input input-bordered w-full" />
+          <input
+            name="artifactImage"
+            type="url"
+            className="input input-bordered w-full"
+          />
         </fieldset>
 
         <fieldset className="fieldset">
@@ -29,53 +70,95 @@ const AddArtifact = () => {
           </select>
         </fieldset>
 
-        <fieldset className="fieldset">
-          <label className="label" htmlFor="createdAt">
-            <span className="label-text">Created At</span>
-          </label>
-          <input name="createdAt" type="text" className="input input-bordered w-full" placeholder="e.g., 100 BC" />
-        </fieldset>
-
         <fieldset className="fieldset md:col-span-2">
           <label className="label" htmlFor="historicalContext">
             <span className="label-text">Historical Context</span>
           </label>
-          <textarea name="historicalContext" className="textarea textarea-bordered w-full"></textarea>
+          <textarea
+            name="historicalContext"
+            className="textarea textarea-bordered w-full"
+          ></textarea>
+        </fieldset>
+        <fieldset className="fieldset md:col-span-2">
+          <label className="label" htmlFor="shortDescription">
+            <span className="label-text">Short Description</span>
+          </label>
+          <textarea
+            name="shortDescription"
+            className="textarea textarea-bordered w-full"
+            placeholder="Brief summary of the artifact"
+          ></textarea>
         </fieldset>
 
+        <fieldset className="fieldset">
+          <label className="label" htmlFor="createdAt">
+            <span className="label-text">Created At</span>
+          </label>
+          <input
+            name="createdAt"
+            type="text"
+            className="input input-bordered w-full"
+            placeholder="e.g., 100 BC"
+          />
+        </fieldset>
         <fieldset className="fieldset">
           <label className="label" htmlFor="discoveredAt">
             <span className="label-text">Discovered At</span>
           </label>
-          <input name="discoveredAt" type="text" className="input input-bordered w-full" placeholder="e.g., 1799" />
+          <input
+            name="discoveredAt"
+            type="text"
+            className="input input-bordered w-full"
+            placeholder="e.g., 1799"
+          />
         </fieldset>
 
         <fieldset className="fieldset">
           <label className="label" htmlFor="discoveredBy">
             <span className="label-text">Discovered By</span>
           </label>
-          <input name="discoveredBy" type="text" className="input input-bordered w-full" />
+          <input
+            name="discoveredBy"
+            type="text"
+            className="input input-bordered w-full"
+          />
         </fieldset>
 
         <fieldset className="fieldset md:col-span-2">
           <label className="label" htmlFor="presentLocation">
             <span className="label-text">Present Location</span>
           </label>
-          <input name="presentLocation" type="text" className="input input-bordered w-full" />
+          <input
+            name="presentLocation"
+            type="text"
+            className="input input-bordered w-full"
+          />
         </fieldset>
 
         <fieldset className="fieldset">
           <label className="label" htmlFor="userName">
             <span className="label-text">Your Name</span>
           </label>
-          <input name="userName" type="text" className="input input-bordered w-full" readOnly value="John Doe" />
+          <input
+            name="userName"
+            type="text"
+            className="input input-bordered w-full"
+            readOnly
+            defaultValue={user.displayName}
+          />
         </fieldset>
 
         <fieldset className="fieldset">
           <label className="label" htmlFor="userEmail">
             <span className="label-text">Your Email</span>
           </label>
-          <input name="userEmail" type="email" className="input input-bordered w-full" readOnly value="john@example.com" />
+          <input
+            name="userEmail"
+            type="email"
+            className="input input-bordered w-full"
+            readOnly
+            defaultValue={user.email}
+          />
         </fieldset>
 
         <div className="fieldset md:col-span-2 mt-4">
