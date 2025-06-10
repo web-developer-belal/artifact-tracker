@@ -1,25 +1,100 @@
+import { useState } from "react";
+import CountUp from "react-countup";
+import { motion } from "framer-motion";
+
+// Example data (replace with real data or props)
+const artifact = {
+  artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  artifactName: "Antikythera Mechanism",
+  shortDescription: "Ancient Greek analog computer used to predict astronomical positions and eclipses.",
+  type: "Tools",
+  createdAt: "150 BC",
+  discoveredAt: "1901",
+  discoveredBy: "Valerios Stais",
+  presentLocation: "National Archaeological Museum, Athens",
+  addedBy: "John Doe (john@example.com)",
+  likeCount: 34,
+};
+
+const otherArtifacts = [
+  {
+    artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    artifactName: "Rosetta Stone",
+    shortDescription: "Key to understanding Egyptian hieroglyphs.",
+  },
+  {
+    artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    artifactName: "Dead Sea Scrolls",
+    shortDescription: "Ancient Jewish religious manuscripts.",
+  },
+];
+
 const ArtifactDetails = () => {
+  const [likes, setLikes] = useState(artifact.likeCount);
+
   return (
-    <div className="px-4 py-8 max-w-4xl mx-auto">
-      <img
-        src="https://images.unsplash.com/photo-1611924653334-d518a50a4d9a"
-        alt="Artifact"
-        className="w-full h-64 object-cover rounded-xl mb-6"
-      />
-      <h2 className="text-3xl font-bold">Antikythera Mechanism</h2>
-      <p className="my-4">
-        Ancient Greek analog computer used to predict astronomical positions and eclipses.
-      </p>
-      <div className="space-y-1">
-        <p><strong>Type:</strong> Tools</p>
-        <p><strong>Created At:</strong> 150 BC</p>
-        <p><strong>Discovered At:</strong> 1901</p>
-        <p><strong>Discovered By:</strong> Valerios Stais</p>
-        <p><strong>Present Location:</strong> National Archaeological Museum, Athens</p>
-        <p><strong>Added By:</strong> John Doe (john@example.com)</p>
-        <div className="mt-4">
-          <button className="btn btn-outline btn-success">👍 Like (34)</button>
-        </div>
+    <div className="px-4 py-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Left: Artifact Details */}
+        <motion.div
+          className="md:col-span-2 bg-base-100 rounded-xl shadow-lg p-6 flex flex-col"
+          initial={{ opacity: 0, x: -40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <img
+            src={artifact.artifactImage}
+            alt={artifact.artifactName}
+            className="w-full h-72 object-cover rounded-xl mb-6 shadow"
+          />
+          <h2 className="text-4xl font-bold mb-2">{artifact.artifactName}</h2>
+          <p className="text-lg text-gray-600 mb-4">{artifact.shortDescription}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <p><strong>Type:</strong> {artifact.type}</p>
+            <p><strong>Created At:</strong> {artifact.createdAt}</p>
+            <p><strong>Discovered At:</strong> {artifact.discoveredAt}</p>
+            <p><strong>Discovered By:</strong> {artifact.discoveredBy}</p>
+            <p><strong>Present Location:</strong> {artifact.presentLocation}</p>
+            <p><strong>Added By:</strong> {artifact.addedBy}</p>
+          </div>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.05 }}
+            className="btn btn-outline btn-success w-fit flex items-center gap-2"
+            onClick={() => setLikes(likes + 1)}
+          >
+            👍 Like (
+            <CountUp end={Number(likes)} duration={5} key={likes} />
+            )
+          </motion.button>
+        </motion.div>
+
+        {/* Right: Other Artifacts */}
+        <motion.div
+          className="space-y-6"
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="text-xl font-semibold mb-2">Other Artifacts</h3>
+          {otherArtifacts.map((a, idx) => (
+            <motion.div
+              key={idx}
+              className="bg-base-200 rounded-lg cursor-pointer shadow p-4 flex gap-4 hover:shadow-lg transition"
+              whileHover={{ scale: 1.02 }}
+            >
+              <img
+                src={a.artifactImage}
+                alt={a.artifactName}
+                className="w-20 h-20 object-cover rounded-lg"
+              />
+              <div>
+                <h4 className="font-bold text-lg">{a.artifactName}</h4>
+                <p className="text-gray-600 text-sm">{a.shortDescription}</p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </div>
   );

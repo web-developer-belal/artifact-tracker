@@ -1,6 +1,6 @@
 const Search = () => {
   return (
-    <div className="flex items-center justify-center max-w-4xl mx-auto mb-5">
+    <div className="flex items-center justify-center max-w-4xl mx-auto mb-5 !z-0">
       <label className="input w-full">
         <svg
           className="h-[1em] opacity-50"

@@ -1,0 +1,9 @@
+.nav-link.active {
+  color: var(--color-primary);
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-primary);
+  border-radius: 0;
+}
+.menu{
+    gap: 15px;
+}

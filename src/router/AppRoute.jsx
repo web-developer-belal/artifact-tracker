@@ -8,11 +8,13 @@ import MyArtifacts from "../pages/MyArtifacts";
 import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import ArtifactDetails from "../pages/ArtifactDetails";
+import ErrorPage from "../components/errors/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         index:true,
@@ -44,7 +46,7 @@ const router = createBrowserRouter([
         Component:AllArtifacts
       },
        {
-        path:'/artifact-details',
+        path:'/artifact-details/:id',
         Component:ArtifactDetails
       },
 
