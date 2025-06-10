@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../context/AuthProvider";
+import axios from "axios";
 
 const otherArtifacts = [
   {
@@ -17,9 +19,28 @@ const otherArtifacts = [
 ];
 
 const ArtifactDetails = () => {
+  const {user}=use(AuthContext);
   const artifact = useLoaderData()
   const [likes, setLikes] = useState(artifact.likeCount);
-
+  const handleLike = (artifactId, userEmail) => {
+    axios.post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/like`, {
+      artifactId,
+      userEmail
+    }).then((response) => {
+      if (response.status === 200) {
+        console.log("Artifact liked successfully:", response.data);
+        if(response.data.liked){
+          setLikes(likes + 1);
+        }else{
+          setLikes(likes - 1);
+        }
+      } else {
+        console.error("Error liking artifact:", response);
+      }
+    }).catch((error) => {
+      console.error("Error liking artifact:", error);
+    }); 
+  }
   return (
     <div className="px-4 py-8 max-w-6xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -49,7 +70,7 @@ const ArtifactDetails = () => {
             whileTap={{ scale: 0.95 }}
             whileHover={{ scale: 1.05 }}
             className="btn btn-outline btn-success w-fit flex items-center gap-2"
-            onClick={() => setLikes(likes + 1)}
+            onClick={() => handleLike(artifact._id,user.email)}
           >
             👍 Like (
             <CountUp end={Number(likes)} duration={5} key={likes} />
