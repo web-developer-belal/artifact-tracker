@@ -49,6 +49,8 @@ const router = createBrowserRouter([
           },
           {
             path: "/all-artifacts",
+            loader: () =>
+              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts`),
             Component: AllArtifacts,
           },
           {

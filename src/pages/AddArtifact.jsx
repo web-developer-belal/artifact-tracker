@@ -15,16 +15,16 @@ const AddArtifact = () => {
       .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData)
       .then((response) => {
         if (response.status === 200) {
-          console.log("Artifact added successfully:", response.data);
+          // console.log("Artifact added successfully:", response.data);
           event.target.reset();
           toast.success("Artifact added successfully!");
         } else {
-          console.error("Error adding artifact:", response);
+          // console.error("Error adding artifact:", response);
           toast.error("Failed to add artifact. Please try again.");
         }
       })
       .catch((error) => {
-        console.error("Error adding artifact:", error);
+        // console.error("Error adding artifact:", error);
         toast.error("Failed to add artifact. Please try again.");
       });
   };
