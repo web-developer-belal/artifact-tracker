@@ -22,7 +22,7 @@ const ArtifactCard = ({ artifact }) => {
             <SlLike />
             <CountUp end={Number(likeCount)} duration={2.75} />
           </div>
-          <Link to={`/artifact-details/${artifact.id}`} className="btn btn-sm btn-outline btn-primary">
+          <Link to={`/artifact-details/${artifact._id}`} className="btn btn-sm btn-outline btn-primary">
             View Details
           </Link>
         </div>

@@ -1,20 +1,7 @@
 import { useState } from "react";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
-
-// Example data (replace with real data or props)
-const artifact = {
-  artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  artifactName: "Antikythera Mechanism",
-  shortDescription: "Ancient Greek analog computer used to predict astronomical positions and eclipses.",
-  type: "Tools",
-  createdAt: "150 BC",
-  discoveredAt: "1901",
-  discoveredBy: "Valerios Stais",
-  presentLocation: "National Archaeological Museum, Athens",
-  addedBy: "John Doe (john@example.com)",
-  likeCount: 34,
-};
+import { useLoaderData } from "react-router";
 
 const otherArtifacts = [
   {
@@ -30,6 +17,7 @@ const otherArtifacts = [
 ];
 
 const ArtifactDetails = () => {
+  const artifact = useLoaderData()
   const [likes, setLikes] = useState(artifact.likeCount);
 
   return (

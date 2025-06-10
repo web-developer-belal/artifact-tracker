@@ -3,29 +3,11 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import ArtifactCard from "../components/artifact/ArtifactCard";
-
-const artifacts = [
-  {
-    artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    artifactName: "Rosetta Stone",
-    shortDescription: "Key to understanding Egyptian hieroglyphs.",
-    likeCount: 25,
-  },
-  {
-    artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    artifactName: "Antikythera Mechanism",
-    shortDescription: "Ancient Greek analog computer.",
-    likeCount: 30,
-  },
-  {
-    artifactImage: "https://images.unsplash.com/photo-1490237014491-822aee911b99?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    artifactName: "Dead Sea Scrolls",
-    shortDescription: "Ancient Jewish religious manuscripts.",
-    likeCount: 40,
-  },
-];
+import { useLoaderData } from "react-router";
 
 const Home = () => {
+  const artifacts = useLoaderData();
+  // console.log("Artifacts loaded:", artifacts);
   return (
     <div className="px-4 space-y-10">
       <section>
@@ -65,7 +47,6 @@ const Home = () => {
       </section>
 
       <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {console.log("Artifacts to render:", artifacts)}
         {artifacts.map((artifact, index) => (
           <ArtifactCard key={index} artifact={artifact} />
         ))}

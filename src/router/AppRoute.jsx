@@ -19,38 +19,42 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: '/',
+        path: "/",
+        loader: () =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts`),
         Component: Home,
       },
       {
-        path: '/login',
+        path: "/login",
         Component: Login,
       },
       {
-        path: '/register',
+        path: "/register",
         Component: Register,
       },
       {
         element: <ProtectedRoute />,
         children: [
           {
-            path: '/add-artifacts',
+            path: "/add-artifacts",
             Component: AddArtifact,
           },
           {
-            path: '/liked-artifacts',
+            path: "/liked-artifacts",
             Component: LikedArtifacts,
           },
           {
-            path: '/my-artifacts',
+            path: "/my-artifacts",
             Component: MyArtifacts,
           },
           {
-            path: '/all-artifacts',
+            path: "/all-artifacts",
             Component: AllArtifacts,
           },
           {
-            path: '/artifact-details/:id',
+            path: "/artifact-details/:id",
+            loader: ({ params }) =>
+              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`),
             Component: ArtifactDetails,
           },
         ],
