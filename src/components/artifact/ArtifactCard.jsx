@@ -4,7 +4,7 @@ import { SlLike } from "react-icons/sl";
 import { Link } from "react-router";
 import { Img } from 'react-image';
 
-const ArtifactCard = ({ artifact, editDelete = false, handleDelete }) => {
+const ArtifactCard = ({ artifact, editDelete = false , handleDelete }) => {
   const { artifactImage, artifactName, shortDescription, likeCount, _id } = artifact;
 
   return (

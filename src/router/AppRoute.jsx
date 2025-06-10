@@ -10,6 +10,7 @@ import Register from "../pages/auth/Register";
 import ArtifactDetails from "../pages/ArtifactDetails";
 import ErrorPage from "../components/errors/ErrorPage";
 import ProtectedRoute from "../middlewire/ProtectedRoute";
+import EditArtifact from "../pages/EditArtifact";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,12 @@ const router = createBrowserRouter([
             loader: ({ params }) =>
               fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`),
             Component: ArtifactDetails,
+          },
+          {
+            path: "/edit-artifact/:id",
+            loader: ({ params }) =>
+              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`),
+            Component: EditArtifact,
           },
         ],
       },
