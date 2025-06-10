@@ -9,48 +9,53 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import ArtifactDetails from "../pages/ArtifactDetails";
 import ErrorPage from "../components/errors/ErrorPage";
+import ProtectedRoute from "../middlewire/ProtectedRoute";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage />,
+    children: [
       {
-        index:true,
-        path:'/',
-        Component:Home
-      },
-      {
-        path:'/login',
-        Component:Login
+        index: true,
+        path: '/',
+        Component: Home,
       },
       {
-        path:'/register',
-        Component:Register
+        path: '/login',
+        Component: Login,
       },
       {
-        path:'/add-artifacts',
-        Component:AddArtifact
+        path: '/register',
+        Component: Register,
       },
       {
-        path:'/liked-artifacts',
-        Component:LikedArtifacts
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/add-artifacts',
+            Component: AddArtifact,
+          },
+          {
+            path: '/liked-artifacts',
+            Component: LikedArtifacts,
+          },
+          {
+            path: '/my-artifacts',
+            Component: MyArtifacts,
+          },
+          {
+            path: '/all-artifacts',
+            Component: AllArtifacts,
+          },
+          {
+            path: '/artifact-details/:id',
+            Component: ArtifactDetails,
+          },
+        ],
       },
-      {
-        path:'/my-artifacts',
-        Component:MyArtifacts
-      },
-      {
-        path:'/all-artifacts',
-        Component:AllArtifacts
-      },
-       {
-        path:'/artifact-details/:id',
-        Component:ArtifactDetails
-      },
-
-    ]
+    ],
   },
 ]);
 
