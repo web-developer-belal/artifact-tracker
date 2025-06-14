@@ -3,7 +3,7 @@ import loadingAnimation from "../assets/lottie/loading.json";
 
 const Loading = () => {
     return (
-        <div className='min-h-[400px] flex flex-col items-center justify-center'>
+        <div className='min-h-[300px] flex flex-col items-center justify-center'>
             <Lottie animationData={loadingAnimation} style={{width:200}}></Lottie>
         </div>
     );

@@ -1,10 +1,11 @@
-import { Link, NavLink } from "react-router";
+import { Link, Links, NavLink } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { use } from "react";
 import { toast } from "react-toastify";
 import Lottie from "lottie-react";
 import userPhoto from "../../assets/lottie/user.json";
-import './header.css';
+import "./header.css";
+import { Img } from "react-image";
 const Header = () => {
   const { user, logout } = use(AuthContext);
   const handleLogout = () => {
@@ -37,34 +38,48 @@ const Header = () => {
             className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink className="nav-link" to="/">Home</NavLink>
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/all-artifacts">All Artifacts</NavLink>
+              <NavLink className="nav-link" to="/all-artifacts">
+                All Artifacts
+              </NavLink>
             </li>
             <li>
-              <NavLink className="nav-link" to="/add-artifacts">Add Artifacts</NavLink>
+              <NavLink className="nav-link" to="/add-artifacts">
+                Add Artifacts
+              </NavLink>
             </li>
           </ul>
         </div>
-        <NavLink className="nav-brand" >Historical Tracker</NavLink>
+        <Link to="/" className="nav-brand font-extrabold text-2xl">
+          Historical <span className="text-secondary">Tracker</span>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <NavLink className="nav-link" to="/">Home</NavLink>
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink className="nav-link" to="/all-artifacts">All Artifacts</NavLink>
+            <NavLink className="nav-link" to="/all-artifacts">
+              All Artifacts
+            </NavLink>
           </li>
           <li>
-            <NavLink className="nav-link" to="/add-artifacts">Add Artifacts</NavLink>
+            <NavLink className="nav-link" to="/add-artifacts">
+              Add Artifacts
+            </NavLink>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
         {!user ? (
-          <Link to="/login" className="btn ">
+          <Link to="/login" className="btn rounded-full btn-secondary">
             Login
           </Link>
         ) : (
@@ -75,7 +90,23 @@ const Header = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                {user.photoURL ? <img alt="User Avatar" src={user.photoURL} /> : <Lottie animationData={userPhoto} classID="bg-base-200"></Lottie>}
+                {user.photoURL ? (
+                  <Img
+                    src={user.photoURL}
+                    alt="user"
+                    unloader={
+                      <Lottie
+                        animationData={userPhoto}
+                        classID="bg-base-200"
+                      ></Lottie>
+                    }
+                  />
+                ) : (
+                  <Lottie
+                    animationData={userPhoto}
+                    classID="bg-base-200"
+                  ></Lottie>
+                )}
               </div>
             </div>
             <ul
@@ -92,7 +123,9 @@ const Header = () => {
                 <NavLink to="/liked-artifacts">Liked Artifacts</NavLink>
               </li>
               <li>
-                <button onClick={handleLogout} className="cursor-pointer">Logout</button>
+                <button onClick={handleLogout} className="cursor-pointer">
+                  Logout
+                </button>
               </li>
             </ul>
           </div>

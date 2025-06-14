@@ -4,12 +4,13 @@ import Footer from "../components/footer/Footer";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 
-const Root = () => {
+const Root = ({children}) => {
   return (
     <>
       <Header></Header>
       <main className="py-5 px-3 md:px-5">
         <Outlet></Outlet>
+        {children}
       </main>
       <Footer></Footer>
       <ToastContainer></ToastContainer>

@@ -2,20 +2,22 @@ import CountUp from "react-countup";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { SlLike } from "react-icons/sl";
 import { Link } from "react-router";
-import { Img } from 'react-image';
 
-const ArtifactCard = ({ artifact, editDelete = false , handleDelete }) => {
-  const { artifactImage, artifactName, shortDescription, likeCount, _id } = artifact;
+const ArtifactCard = ({ artifact, editDelete = false, handleDelete }) => {
+  const { artifactImage, artifactName, shortDescription, likeCount, _id } =
+    artifact;
 
   return (
     <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
       <figure className="relative">
-        <Img
+        <img
           src={artifactImage}
           alt={artifactName}
-          loader={<div>Loading...</div>}
           className="h-56 w-full object-cover"
-          unloader={<img src="https://placehold.co/600x400?text=Artifact+Image+Not+Found" alt="No Image" />}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = "https://placehold.co/600x400?text=Artifact+Image";
+          }}
         />
         {editDelete && (
           <div className="absolute top-3 right-3 flex gap-2 z-10">

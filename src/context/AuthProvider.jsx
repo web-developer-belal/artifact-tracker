@@ -6,9 +6,10 @@ import {
   signOut,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
-  signInWithPopup
+  signInWithPopup,
 } from "firebase/auth";
 import app from "../services/firebase.config.js";
+import axios from "axios";
 export const AuthContext = createContext();
 
 const auth = getAuth(app);
@@ -27,7 +28,6 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-
   const googleProvider = new GoogleAuthProvider();
 
   const googleSignIn = () => {
@@ -42,6 +42,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const monitor = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      if (currentUser?.email) {
+        const userData = { email: currentUser.email };
+        axios
+          .post(`${import.meta.env.VITE_APP_BACKEND_URL}/jwt-token`, userData,{withCredentials:true})
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+      }
       setUserLoading(false);
     });
     return () => {
@@ -57,7 +64,7 @@ const AuthProvider = ({ children }) => {
     logout,
     googleSignIn,
     userLoading,
-    setUserLoading
+    setUserLoading,
   };
   return <AuthContext value={authData}>{children}</AuthContext>;
 };

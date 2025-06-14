@@ -1,4 +1,4 @@
-const Search = () => {
+const Search = ({ handelSearch }) => {
   return (
     <div className="flex items-center justify-center max-w-4xl mx-auto mb-5 !z-0">
       <label className="input w-full">
@@ -18,7 +18,12 @@ const Search = () => {
             <path d="m21 21-4.3-4.3"></path>
           </g>
         </svg>
-        <input type="search" required placeholder="Search artifacts" />
+        <input
+          type="search"
+          required
+          placeholder="Search artifacts"
+          onChange={e => handelSearch(e.target.value)}
+        />
       </label>
     </div>
   );

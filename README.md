@@ -1,5 +1,8 @@
 # Assignment 11 - Historical Artifacts Tracker
+This is a web application for tracking historical artifacts.Here user can add, update, delete and view artifacts. It also allows users to search for artifacts by name.Then can also like and dislike artifacts, and view the most liked artifacts.
 
+
+## 🚀 Getting Started
 ## 📦 Installed Packages
 
 ### Dependencies

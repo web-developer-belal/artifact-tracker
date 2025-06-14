@@ -11,18 +11,19 @@ import ArtifactDetails from "../pages/ArtifactDetails";
 import ErrorPage from "../components/errors/ErrorPage";
 import ProtectedRoute from "../middlewire/ProtectedRoute";
 import EditArtifact from "../pages/EditArtifact";
+import Loading from "../components/Loading";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement: <ErrorPage />,
+    errorElement:<Root> <ErrorPage /></Root>,
     children: [
       {
         index: true,
         path: "/",
         loader: () =>
-          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts`),
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts?limit=6`),
         Component: Home,
       },
       {
