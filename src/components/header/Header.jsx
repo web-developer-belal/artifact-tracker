@@ -6,11 +6,17 @@ import Lottie from "lottie-react";
 import userPhoto from "../../assets/lottie/user.json";
 import "./header.css";
 import { Img } from "react-image";
+import axios from "axios";
 const Header = () => {
   const { user, logout } = use(AuthContext);
   const handleLogout = () => {
-    logout()
-      .then(() => toast.success("Logout successful"))
+     logout()
+      .then(() => {
+        axios
+          .post(`${import.meta.env.VITE_APP_BACKEND_URL}/logout`,{},{ withCredentials: true })
+          .then(() => toast.success("Logout successful"))
+          .catch(() => toast.success("Logout successful"));
+      })
       .catch(() => toast.error("Logout failed"));
   };
   return (

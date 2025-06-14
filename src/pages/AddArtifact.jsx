@@ -12,7 +12,7 @@ const AddArtifact = () => {
     formData = Object.fromEntries(formData.entries());
     // console.log("Form Data Submitted:", Object.fromEntries(formData.entries()));
     axios
-      .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData)
+      .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData,{ withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           // console.log("Artifact added successfully:", response.data);

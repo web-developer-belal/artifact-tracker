@@ -46,8 +46,6 @@ const AuthProvider = ({ children }) => {
         const userData = { email: currentUser.email };
         axios
           .post(`${import.meta.env.VITE_APP_BACKEND_URL}/jwt-token`, userData,{withCredentials:true})
-          .then((res) => console.log(res))
-          .catch((err) => console.log(err));
       }
       setUserLoading(false);
     });

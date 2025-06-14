@@ -17,7 +17,11 @@ const MyArtifacts = () => {
     const fetchMyArtifacts = async () => {
       try {
         axios
-          .get(`${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`,{ params: { email: user.email } }, {withCredentials:true})
+          .get(
+            `${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`,
+            { params: { email: user.email } },
+            { withCredentials: true }
+          )
           .then((response) => {
             console.log(response);
             if (response.status === 200) {
@@ -45,7 +49,7 @@ const MyArtifacts = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${id}`)
+          .delete(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${id}`,{ withCredentials: true })
           .then((response) => {
             if (response.status === 200) {
               toast.success("Artifact deleted successfully!");
@@ -66,7 +70,7 @@ const MyArtifacts = () => {
     axios
       .get(`${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`, {
         params: { email: user.email, search: searchValue },
-      })
+      },{ withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
           setArtifacts(response.data);
@@ -94,7 +98,12 @@ const MyArtifacts = () => {
       ) : (
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {artifacts.map((artifact, idx) => (
-            <ArtifactCard key={idx} artifact={artifact} editDelete={true} handleDelete={handleDelete} />
+            <ArtifactCard
+              key={idx}
+              artifact={artifact}
+              editDelete={true}
+              handleDelete={handleDelete}
+            />
           ))}
         </div>
       )}

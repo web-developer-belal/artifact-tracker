@@ -4,24 +4,28 @@ import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { useLoaderData, useNavigate, useParams } from "react-router";
 
-const EditArtifact = () => {  
+const EditArtifact = () => {
   const { user } = use(AuthContext);
-  const artifactId=useParams().id;
-  const artifact=useLoaderData();
+  const artifactId = useParams().id;
+  const artifact = useLoaderData();
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     let formData = new FormData(event.target);
-   
+
     formData = Object.fromEntries(formData.entries());
     axios
-      .put(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${artifactId}`, formData)
+      .put(
+        `${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${artifactId}`,
+        formData,
+        { withCredentials: true }
+      )
       .then((response) => {
         if (response.status === 200) {
           // console.log("Artifact added successfully:", response.data);
           event.target.reset();
           toast.success("Artifact added successfully!");
-          navigate('/my-artifacts')
+          navigate("/my-artifacts");
         } else {
           // console.error("Error adding artifact:", response);
           toast.error("Failed to add artifact. Please try again.");
