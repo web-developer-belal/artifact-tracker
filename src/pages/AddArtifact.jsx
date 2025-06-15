@@ -13,7 +13,9 @@ const AddArtifact = () => {
     formData.append("likeCount", 0);
     formData = Object.fromEntries(formData.entries());
     axios
-      .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData,{ withCredentials: true })
+      .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.status === 200) {
           event.target.reset();
@@ -31,7 +33,7 @@ const AddArtifact = () => {
       <Helmet>
         <title>Add artifacts.</title>
       </Helmet>
-      <SectionTitle title="Add new artifacts" center={true}/>
+      <SectionTitle title="Add new artifacts" center={true} />
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl p-6 mx-auto bg-base-200 shadow hover:shadow-md transition-all rounded-lg "
@@ -67,6 +69,17 @@ const AddArtifact = () => {
             <option>Weapons</option>
             <option>Documents</option>
             <option>Writings</option>
+            <option>Jewelry</option>
+            <option>Pottery</option>
+            <option>Coins</option>
+            <option>Textiles</option>
+            <option>Statues</option>
+            <option>Paintings</option>
+            <option>Architecture</option>
+            <option>Relics</option>
+            <option>Manuscripts</option>
+            <option>Maps</option>
+            <option>Other</option>
           </select>
         </fieldset>
 

@@ -81,10 +81,21 @@ const EditArtifact = () => {
             defaultValue={artifact.artifactType}
           >
             <option value="">Select Type</option>
-            <option value="Tools">Tools</option>
-            <option value="Weapons">Weapons</option>
-            <option value="Documents">Documents</option>
-            <option value="Writings">Writings</option>
+            <option>Tools</option>
+            <option>Weapons</option>
+            <option>Documents</option>
+            <option>Writings</option>
+            <option>Jewelry</option>
+            <option>Pottery</option>
+            <option>Coins</option>
+            <option>Textiles</option>
+            <option>Statues</option>
+            <option>Paintings</option>
+            <option>Architecture</option>
+            <option>Relics</option>
+            <option>Manuscripts</option>
+            <option>Maps</option>
+            <option>Other</option>
           </select>
         </fieldset>
 
