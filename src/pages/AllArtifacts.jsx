@@ -32,7 +32,6 @@ const AllArtifacts = () => {
       });
   };
 
-  // If loader data changes (e.g. on navigation), update state
   useEffect(() => {
     setArtifacts(loaderArtifacts);
   }, [loaderArtifacts]);

@@ -18,7 +18,7 @@ const LikedArtifacts = () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_APP_BACKEND_URL}/liked-artifacts`,
-          { params: { email: user.email } },{ withCredentials: true }
+          { params: { email: user.email }, withCredentials: true }
         );
         if (response.status === 200) {
           setArtifacts(response.data);

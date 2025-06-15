@@ -7,7 +7,6 @@ import { use, useState } from "react";
 import { Helmet } from "react-helmet";
 const Register = () => {
   const [loading, setLoading] = useState(false);
-  // const [showPassword, setShowPassword] = useState(false);
   const { setUser, registerUser } = use(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,9 +15,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     const form = e.target;
-    //const name = form.name.value;
     const email = form.email.value;
-    //const photoUrl = form.photo_url.value;
     const password = form.password.value;
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);

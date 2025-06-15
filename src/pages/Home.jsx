@@ -92,21 +92,21 @@ const Home = () => {
           </h2>
           <ul className="space-y-3 text-blue-800">
             <li className="flex items-center gap-2">
-              <span className="inline-block w-6 h-6 bg-blue-500 text-white rounded-full text-center font-bold">
+              <span className="inline-block min-w-6 min-h-6 bg-blue-500 text-white rounded-full text-center font-bold">
                 1
               </span>
               Browse and discover thousands of historical artifacts from around
               the world.
             </li>
             <li className="flex items-center gap-2">
-              <span className="inline-block w-6 h-6 bg-blue-500 text-white rounded-full text-center font-bold">
+              <span className="inline-block min-w-6 min-h-6 bg-blue-500 text-white rounded-full text-center font-bold">
                 2
               </span>
               Add your own discoveries and share their stories with the
               community.
             </li>
             <li className="flex items-center gap-2">
-              <span className="inline-block w-6 h-6 bg-blue-500 text-white rounded-full text-center font-bold">
+              <span className="inline-block min-w-6 min-h-6 bg-blue-500 text-white rounded-full text-center font-bold">
                 3
               </span>
               Like, comment, and save your favorite artifacts for easy access.
@@ -116,7 +116,7 @@ const Home = () => {
         <img
           src="./images/slider-1.jpg"
           alt="How it works"
-          className="w-60 h-60 object-contain rounded-xl shadow-lg bg-white"
+          className="w-60 h-60 object-cover rounded-xl shadow-lg bg-white"
         />
       </section>
       <section className="bg-gradient-to-r from-green-50 to-green-100 p-8 rounded-xl shadow my-8">

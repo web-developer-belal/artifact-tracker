@@ -11,7 +11,6 @@ const style = {
 };
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  // const [showPassword, setShowPassword] = useState(false);
   const { user, setUser, signInUser, googleSignIn } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();

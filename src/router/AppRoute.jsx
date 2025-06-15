@@ -17,13 +17,20 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
-    errorElement:<Root> <ErrorPage /></Root>,
+    errorElement: (
+      <Root>
+        {" "}
+        <ErrorPage />
+      </Root>
+    ),
     children: [
       {
         index: true,
         path: "/",
         loader: () =>
-          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts?limit=6`),
+          fetch(
+            `${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts?limit=6`
+          ),
         Component: Home,
       },
       {
@@ -33,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/register",
         Component: Register,
+      },
+      {
+        path: "/all-artifacts",
+        loader: () =>
+          fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts`),
+        Component: AllArtifacts,
       },
       {
         element: <ProtectedRoute />,
@@ -49,22 +62,27 @@ const router = createBrowserRouter([
             path: "/my-artifacts",
             Component: MyArtifacts,
           },
-          {
-            path: "/all-artifacts",
-            loader: () =>
-              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts`),
-            Component: AllArtifacts,
-          },
+
           {
             path: "/artifact-details/:id",
             loader: ({ params }) =>
-              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`),
+              fetch(
+                `${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`,
+                {
+                  credentials: "include",
+                }
+              ),
             Component: ArtifactDetails,
           },
           {
             path: "/edit-artifact/:id",
             loader: ({ params }) =>
-              fetch(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`),
+              fetch(
+                `${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${params.id}`,
+                {
+                  credentials: "include",
+                }
+              ),
             Component: EditArtifact,
           },
         ],

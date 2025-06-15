@@ -3,6 +3,7 @@ import { use } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import SectionTitle from "../components/SectionTitle";
 
 const AddArtifact = () => {
   const { user } = use(AuthContext);
@@ -11,31 +12,26 @@ const AddArtifact = () => {
     let formData = new FormData(event.target);
     formData.append("likeCount", 0);
     formData = Object.fromEntries(formData.entries());
-    // console.log("Form Data Submitted:", Object.fromEntries(formData.entries()));
     axios
       .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifacts`, formData,{ withCredentials: true })
       .then((response) => {
         if (response.status === 200) {
-          // console.log("Artifact added successfully:", response.data);
           event.target.reset();
           toast.success("Artifact added successfully!");
         } else {
-          // console.error("Error adding artifact:", response);
           toast.error("Failed to add artifact. Please try again.");
         }
       })
       .catch((error) => {
-        // console.error("Error adding artifact:", error);
         toast.error("Failed to add artifact. Please try again.");
       });
   };
-  console.log("User Data:", user);
   return (
     <div className="px-4 py-8 bg-base-100">
       <Helmet>
         <title>Add artifacts.</title>
       </Helmet>
-      <h2 className="text-2xl font-bold mb-6 text-center">Add New Artifact</h2>
+      <SectionTitle title="Add new artifacts" center={true}/>
       <form
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl p-6 mx-auto bg-base-200 shadow hover:shadow-md transition-all rounded-lg "

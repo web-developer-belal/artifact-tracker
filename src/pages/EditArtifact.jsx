@@ -19,21 +19,21 @@ const EditArtifact = () => {
       .put(
         `${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${artifactId}`,
         formData,
-        { withCredentials: true }
+        {
+          withCredentials: true,
+          params: { email: user.email },
+        }
       )
       .then((response) => {
         if (response.status === 200) {
-          // console.log("Artifact added successfully:", response.data);
           event.target.reset();
           toast.success("Artifact added successfully!");
           navigate("/my-artifacts");
         } else {
-          // console.error("Error adding artifact:", response);
           toast.error("Failed to add artifact. Please try again.");
         }
       })
       .catch((error) => {
-        // console.error("Error adding artifact:", error);
         toast.error("Failed to add artifact. Please try again.");
       });
   };

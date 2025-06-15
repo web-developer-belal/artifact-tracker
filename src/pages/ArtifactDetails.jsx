@@ -16,10 +16,9 @@ const ArtifactDetails = () => {
       .post(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/like`, {
         artifactId,
         userEmail,
-      })
+      },{withCredentials:true})
       .then((response) => {
         if (response.status === 200) {
-          console.log("Artifact liked successfully:", response.data);
           if (response.data.liked) {
             setLikes(likes + 1);
           } else {
@@ -52,7 +51,7 @@ const ArtifactDetails = () => {
             className="w-full h-72 object-cover rounded-xl mb-6 shadow"
             unloader={
               <img
-                src="https://placehold.co/600x400?text=Artifact+Image+Not+Found"
+                src="https://placehold.co/600x400?text=Artifact+Image"
                 alt="No Image"
               />
             }
@@ -63,7 +62,7 @@ const ArtifactDetails = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
             <p>
-              <strong>Type:</strong> {artifact.type}
+              <strong>Type:</strong> {artifact.artifactType}
             </p>
             <p>
               <strong>Created At:</strong> {artifact.createdAt}
@@ -78,7 +77,14 @@ const ArtifactDetails = () => {
               <strong>Present Location:</strong> {artifact.presentLocation}
             </p>
             <p>
-              <strong>Added By:</strong> {artifact.addedBy}
+              <strong>Added By:</strong> {artifact.userName}
+            </p>
+           <p>
+              <strong>Added Email:</strong> {artifact.userEmail}
+            </p>
+            <p className="sm:col-span-2">
+              <strong>Historical Context:</strong>{" "}
+              {artifact.historicalContext}
             </p>
           </div>
           <motion.button
@@ -88,7 +94,7 @@ const ArtifactDetails = () => {
             onClick={() => handleLike(artifact._id, user.email)}
           >
             👍 Like (
-            <CountUp end={Number(likes)} duration={5} key={likes} />)
+            <span> {likes}</span>)
           </motion.button>
         </motion.div>
       </div>

@@ -11,7 +11,7 @@ const SectionTitle = ({ title, center = false }) => {
       <h2
         className={`
           text-3xl md:text-4xl font-extrabold tracking-tight
-          text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-green-600
+          text-transparent bg-clip-text bg-gradient-to-r from-neutral to-success
           ${center ? 'text-center' : ''}
         `}
       >
@@ -20,7 +20,7 @@ const SectionTitle = ({ title, center = false }) => {
       <div
         className={`
           mt-2 h-1 w-16 rounded-full
-          bg-gradient-to-r from-orange-400 via-green-400 to-green-600
+          bg-gradient-to-r from-neutral via-primary to-success
           ${center ? 'mx-auto' : ''}
         `}
       />

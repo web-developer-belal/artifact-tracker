@@ -18,14 +18,13 @@ const MyArtifacts = () => {
     const fetchMyArtifacts = async () => {
       try {
         axios
-          .get(
-            `${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`,
-            { params: { email: user.email } },
-            { withCredentials: true }
-          )
+          .get(`${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`, {
+            params: { email: user.email },
+            withCredentials: true,
+          })
           .then((response) => {
-            console.log(response);
             if (response.status === 200) {
+              console.log(response);
               setArtifacts(response.data);
             } else {
               console.error("Error fetching artifacts:", response);
@@ -37,7 +36,7 @@ const MyArtifacts = () => {
     };
 
     fetchMyArtifacts();
-  }, []);
+  }, [user.email]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -52,6 +51,7 @@ const MyArtifacts = () => {
         axios
           .delete(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${id}`, {
             withCredentials: true,
+            params: { email: user.email },
           })
           .then((response) => {
             if (response.status === 200) {
