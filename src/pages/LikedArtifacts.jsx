@@ -5,6 +5,7 @@ import axios from "axios";
 import SectionTitle from "../components/SectionTitle";
 import Search from "../components/Search";
 import Loading from "../components/Loading";
+import { Helmet } from "react-helmet";
 
 const LikedArtifacts = () => {
   const { user } = useContext(AuthContext);
@@ -56,6 +57,9 @@ const LikedArtifacts = () => {
   };
   return (
     <div className="px-4 py-8">
+      <Helmet>
+        <title>Liked artifacts</title>
+      </Helmet>
       <Search handelSearch={handelSearch} />
       <SectionTitle title="Liked artifacts" center={true} />
       {loading ? (

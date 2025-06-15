@@ -3,6 +3,7 @@ import { use } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
 import { useLoaderData, useNavigate, useParams } from "react-router";
+import { Helmet } from "react-helmet";
 
 const EditArtifact = () => {
   const { user } = use(AuthContext);
@@ -38,6 +39,9 @@ const EditArtifact = () => {
   };
   return (
     <div className="px-4 py-8 bg-base-100">
+      <Helmet>
+        <title>Edit your artifacts.</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center">Edit Artifact</h2>
       <form
         onSubmit={handleSubmit}

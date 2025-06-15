@@ -5,6 +5,7 @@ import "swiper/css/pagination";
 import ArtifactCard from "../components/artifact/ArtifactCard";
 import { Link, useLoaderData } from "react-router";
 import SectionTitle from "../components/SectionTitle";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const artifacts = useLoaderData();
@@ -36,6 +37,9 @@ const Home = () => {
   ];
   return (
     <div className="px-4 space-y-10">
+      <Helmet>
+        <title>Artifacts tracker || Home page</title>
+      </Helmet>
       <section>
         <Swiper
           className="!z-0"

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import Search from "../components/Search";
 import SectionTitle from "../components/SectionTitle";
+import { Helmet } from "react-helmet";
 
 const MyArtifacts = () => {
   const { user } = use(AuthContext);
@@ -49,7 +50,9 @@ const MyArtifacts = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${id}`,{ withCredentials: true })
+          .delete(`${import.meta.env.VITE_APP_BACKEND_URL}/artifact/${id}`, {
+            withCredentials: true,
+          })
           .then((response) => {
             if (response.status === 200) {
               toast.success("Artifact deleted successfully!");
@@ -68,9 +71,13 @@ const MyArtifacts = () => {
   const handelSearch = (searchValue) => {
     setLoading(true);
     axios
-      .get(`${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`, {
-        params: { email: user.email, search: searchValue },
-      },{ withCredentials: true })
+      .get(
+        `${import.meta.env.VITE_APP_BACKEND_URL}/my-artifacts`,
+        {
+          params: { email: user.email, search: searchValue },
+        },
+        { withCredentials: true }
+      )
       .then((response) => {
         if (response.status === 200) {
           setArtifacts(response.data);
@@ -87,6 +94,9 @@ const MyArtifacts = () => {
 
   return (
     <div className="px-4 py-8">
+      <Helmet>
+        <title>My artifacts</title>
+      </Helmet>
       <Search handelSearch={handelSearch} />
       <SectionTitle title="My artifacts" center={true} />
       {loading ? (

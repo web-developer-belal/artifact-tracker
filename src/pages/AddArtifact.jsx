@@ -2,6 +2,7 @@ import axios from "axios";
 import { use } from "react";
 import { AuthContext } from "../context/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet";
 
 const AddArtifact = () => {
   const { user } = use(AuthContext);
@@ -31,6 +32,9 @@ const AddArtifact = () => {
   console.log("User Data:", user);
   return (
     <div className="px-4 py-8 bg-base-100">
+      <Helmet>
+        <title>Add artifacts.</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-6 text-center">Add New Artifact</h2>
       <form
         onSubmit={handleSubmit}

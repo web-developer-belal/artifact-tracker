@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { use, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
+import { Helmet } from "react-helmet";
 const style = {
   height: 300,
 };
@@ -58,6 +59,9 @@ const Login = () => {
   };
   return (
     <div className="grid md:grid-cols-2 gap-5 items-center justify-center max-w-6xl mx-auto px-6 py-12 bg-base-100 min-h-screen">
+      <Helmet>
+        <title>Login || Artifacts tracker</title>
+      </Helmet>
       <div>
         <Lottie
           animationData={loginAnim}

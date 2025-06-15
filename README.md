@@ -1,18 +1,35 @@
 # Assignment 11 - Historical Artifacts Tracker
-This is a web application for tracking historical artifacts.Here user can add, update, delete and view artifacts. It also allows users to search for artifacts by name.Then can also like and dislike artifacts, and view the most liked artifacts.
 
+Welcome to the **Historical Artifacts Tracker**!  
+A modern web app to **track, discover, and share historical artifacts** from around the world.
 
-## 🚀 Getting Started
-## 📦 Installed Packages
+---
 
-### Dependencies
-- **@tailwindcss/vite**: ^4.1.8
-- **date-fns**: ^4.1.0
-- **framer-motion**: ^12.16.0
-- **react**: ^19.1.0
-- **react-dom**: ^19.1.0
-- **react-icons**: ^5.5.0
-- **react-router**: ^7.6.2
-- **react-toastify**: ^11.0.5
-- **sweetalert2**: ^11.22.0
-- **tailwindcss**: ^4.1.8
+## Features
+
+- **Search Artifacts** by name instantly
+- **Add Artifacts** and share your discoveries
+- **Update & Delete** your own artifacts
+- **Like & Dislike** your favorite finds
+- **Most Liked**: See the most popular artifacts
+- **User Accounts**: Register, login, and manage your contributions
+
+---
+
+## Main Packages Used
+
+- @tailwindcss/vite
+- date-fns
+- framer-motion
+- react
+- react-dom
+- react-icons
+- react-image
+- react-router
+- react-toastify
+- sweetalert2
+- tailwindcss
+
+---
+
+## Live link :

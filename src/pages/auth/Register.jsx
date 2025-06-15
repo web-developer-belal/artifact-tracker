@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
 import { use, useState } from "react";
+import { Helmet } from "react-helmet";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   // const [showPassword, setShowPassword] = useState(false);
@@ -47,6 +48,9 @@ const Register = () => {
 
   return (
     <div className="grid md:grid-cols-2 gap-5 items-center justify-center max-w-6xl mx-auto px-6 py-12 bg-base-100 min-h-screen">
+      <Helmet>
+        <title>Register || Artifacts tracker</title>
+      </Helmet>
       <div>
         <Lottie
           animationData={registerAnim}

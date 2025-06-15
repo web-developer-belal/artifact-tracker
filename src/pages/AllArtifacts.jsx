@@ -5,6 +5,7 @@ import SectionTitle from "../components/SectionTitle";
 import axios from "axios";
 import Loading from "../components/Loading";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const AllArtifacts = () => {
   const loaderArtifacts = useLoaderData();
@@ -38,6 +39,9 @@ const AllArtifacts = () => {
 
   return (
     <>
+    <Helmet>
+        <title>All artifacts collections</title>
+      </Helmet>
       <Search handelSearch={handelSearch} />
       <SectionTitle title="All artifacts" center={true} />
       {loading ? (
