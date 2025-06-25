@@ -43,3 +43,13 @@ A beautifully designed artifact exploration platform built with **React.js**, **
 git clone https://github.com/web-developer-belal/artifact-tracker.git
 cd artifact-tracker
 npm install
+
+---
+
+## Create .env.local and put this data
+VITE_APP_FIREBASE_API_KEY=
+VITE_APP_FIREBASE_AUTH_DOMAIN=
+VITE_APP_FIREBASE_PROJECT_ID=
+VITE_APP_FIREBASE_STORAGE_BUCKET=
+VITE_APP_FIREBASE_MESSAGING_SENDER_ID=
+VITE_APP_BACKEND_URL=
