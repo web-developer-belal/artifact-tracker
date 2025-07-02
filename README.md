@@ -2,7 +2,7 @@
 
 A beautifully designed artifact exploration platform built with **React.js**, **Tailwind CSS**, and **Firebase Auth**. This is the client-side code for the full-stack Artifact Tracker app.
 
-🔗 **Live Site:** [https://artifact-tracker-frontend.netlify.app](https://react-auth-35410.web.app/)  
+🔗 **Live Site:** [https://react-auth-35410.web.app/](https://react-auth-35410.web.app/)  
 🔗 **Backend Repo:** [Artifact Tracker Backend](https://github.com/web-developer-belal/assignment-11-server)
 
 ---
