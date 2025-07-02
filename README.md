@@ -1,35 +1,45 @@
-# Assignment 11 - Historical Artifacts Tracker
+# 🧭 Artifact Tracker – Frontend
 
-Welcome to the **Historical Artifacts Tracker**!  
-A modern web app to **track, discover, and share historical artifacts** from around the world.
+A beautifully designed artifact exploration platform built with **React.js**, **Tailwind CSS**, and **Firebase Auth**. This is the client-side code for the full-stack Artifact Tracker app.
 
----
-
-## Features
-
-- **Search Artifacts** by name instantly
-- **Add Artifacts** and share your discoveries
-- **Update & Delete** your own artifacts
-- **Like & Dislike** your favorite finds
-- **Most Liked**: See the most popular artifacts
-- **User Accounts**: Register, login, and manage your contributions
+🔗 **Live Site:** [https://artifact-tracker-frontend.netlify.app](https://react-auth-35410.web.app/)  
+🔗 **Backend Repo:** [Artifact Tracker Backend](https://github.com/web-developer-belal/assignment-11-server)
 
 ---
 
-## Main Packages Used
-
-- @tailwindcss/vite
-- date-fns
-- framer-motion
-- react
-- react-dom
-- react-icons
-- react-image
-- react-router
-- react-toastify
-- sweetalert2
-- tailwindcss
+## 🚀 Tech Stack
+- `React.js`
+- `Tailwind CSS` + `DaisyUI`
+- `Firebase Authentication`
+- `Framer Motion`
+- `Swiper`
+- `Axios`
+- `React Router v7`
+- `Vite`
 
 ---
 
-## Live link :https://react-auth-35410.web.app
+## ✨ Main Features
+- 🔐 Secure login/register via Firebase
+- 🌙 Theme toggle with multiple DaisyUI themes
+- 📊 Animated stats and interactive UI using Lottie & Framer Motion
+- 📷 Optimized image loading and SEO with React Helmet
+- 🔄 Communicates with Express.js API (backend)
+
+---
+
+## 📦 Key Dependencies
+- `firebase` `^11.9.0`
+- `axios`, `swiper`, `framer-motion`
+- `lottie-react`, `react-countup`, `react-toastify`
+- `sweetalert2`, `react-router`, `react-helmet`
+
+---
+
+## ⚙️ Getting Started
+
+### 📦 Install
+```bash
+git clone https://github.com/web-developer-belal/artifact-tracker.git
+cd artifact-tracker
+npm install

@@ -2,10 +2,10 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 mt-10 border-t">
+    <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10 mt-10">
       <aside>
         <Link to="/" className="nav-brand font-extrabold text-2xl">
-          Historical <span className="text-secondary">Tracker</span>
+          Artifact <span className="text-secondary">Tracker</span>
         </Link>
 
         <p>
@@ -43,22 +43,21 @@ const Footer = () => {
       </nav>
       <nav>
         <h6 className="footer-title">About</h6>
-        <a
+        <Link
           className="link link-hover"
-          href="https://github.com/your-github-profile"
-          target="_blank"
+          to="/about"
           rel="noopener noreferrer"
         >
-          GitHub
-        </a>
-        <a
+          About
+        </Link>
+        <Link
           className="link link-hover"
-          href="mailto:support@artifactstracker.com"
+          to="/contact"
         >
           Contact Support
-        </a>
+        </Link>
         <span className="text-xs text-gray-400 mt-2 block">
-          &copy; {new Date().getFullYear()} Historical Artifacts Tracker
+          &copy; {new Date().getFullYear()} Artifact Tracker
         </span>
       </nav>
     </footer>

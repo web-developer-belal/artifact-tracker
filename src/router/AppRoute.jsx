@@ -12,6 +12,9 @@ import ErrorPage from "../components/errors/ErrorPage";
 import ProtectedRoute from "../middlewire/ProtectedRoute";
 import EditArtifact from "../pages/EditArtifact";
 import Loading from "../components/Loading";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import Faq from "../pages/Faq";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +35,18 @@ const router = createBrowserRouter([
             `${import.meta.env.VITE_APP_BACKEND_URL}/all-artifacts?limit=6`
           ),
         Component: Home,
+      },
+      {
+        path: "/about",
+        Component: About,
+      },
+      {
+        path: "/contact",
+        Component: Contact,
+      },
+      {
+        path: "/faq",
+        Component: Faq,
       },
       {
         path: "/login",

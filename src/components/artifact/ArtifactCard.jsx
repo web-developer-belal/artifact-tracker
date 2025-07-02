@@ -8,7 +8,7 @@ const ArtifactCard = ({ artifact, editDelete = false, handleDelete }) => {
     artifact;
 
   return (
-    <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden flex flex-col">
+    <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden grid grid-cols-1">
       <figure className="relative">
         <img
           src={artifactImage}
